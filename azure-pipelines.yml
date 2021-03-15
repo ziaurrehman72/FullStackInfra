@@ -10,12 +10,12 @@ resources:
     source: ziaurrehman72.hello-rest-api
     trigger: 
       branches:
-      - main
+      - refs/heads/main
   - pipeline: BackEndPipeline   
     source: ziaurrehman72.hello-fe 
     trigger: 
       branches:
-      - main
+      - refs/heads/main
 
 pool:
   vmImage: ubuntu-latest
