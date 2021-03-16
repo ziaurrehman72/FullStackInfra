@@ -3,8 +3,19 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+trigger: none
+resources:
+ pipelines:
+  - pipeline: FrontEndPipeline   
+    source: ziaurrehman72.hello-rest-api
+    trigger: 
+      branches:
+      - refs/heads/main
+  - pipeline: BackEndPipeline   
+    source: ziaurrehman72.hello-fe 
+    trigger: 
+      branches:
+      - refs/heads/main
 
 pool:
   vmImage: ubuntu-latest
