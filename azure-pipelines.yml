@@ -84,6 +84,7 @@ steps:
     cd terraform/
     echo "Running terraform init"
     terraform init
+    az login
     echo "Running terraform plan"
     terraform plan
     ls -lrt -R 
