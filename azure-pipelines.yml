@@ -81,8 +81,8 @@ steps:
 
 #TODO: Run terraform
 - script: |
-    ls -lrt terraform/
-    terraform version
+    cd terraform/
+    terraform plan
   displayName: 'Run Terraform'
 
 #TODO: publish terraform state file to az feeds
