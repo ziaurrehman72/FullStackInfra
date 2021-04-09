@@ -70,6 +70,14 @@ steps:
     terraform version
   displayName: 'Installing Terraform'
 
+- task: AzureCLI@2
+  displayName: Setting up Azure Authentication
+  inputs:
+    azureSubscription: 'MyPersonalSubscription(70b1733f-7ff9-40b8-8dac-faa365f7732c)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'echo "Authenticating to Azure Cloud..."'
+    
 #TODO: Run terraform 
 
 #TODO: publish terraform state file to az feeds
