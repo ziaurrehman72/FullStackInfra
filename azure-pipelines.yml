@@ -33,6 +33,7 @@ steps:
     mkdir terraform
     echo Creating Directory 'database'
     mkdir database
+    ls -lrt 
   displayName: 'Create directory structure'
 
 
@@ -80,7 +81,7 @@ steps:
 
 #TODO: Run terraform
 - script: |
-    ls -lrt 
+    ls -lrt terraform/
     terraform version
   displayName: 'Run Terraform'
 
