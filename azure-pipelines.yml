@@ -86,7 +86,7 @@ steps:
     terraform init
     echo "Running terraform plan"
     terraform plan
-    ls -lrt -R terraform
+    ls -lrt -R 
   displayName: 'Run Terraform'
 
 #TODO: publish terraform state file to az feeds
