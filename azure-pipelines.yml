@@ -1,9 +1,13 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Pipeline for provisioning and deployment of infrastructure.
 
 trigger: none
+
+variables:
+  terraformStateName: terraformState
+  terraformStateVersion: 1.0
+  databaseBackupName: databaseBackup
+  databaseBackupVersion: 1.0
+
 resources:
  pipelines:
   - pipeline: FrontEndPipeline   
@@ -34,8 +38,8 @@ steps:
   inputs:
     packageType: 'upack'
     feed: '861dcca4-4ec2-450d-9a1e-3da6589aaed3/88f2c9de-f3d7-411b-8a5b-eff9807a7bcc'
-    definition: 'terraformState'
-    version: '1.0'
+    definition: $(terraformState)
+    version: $(terraformStateVersion)
     downloadPath: 'terraform/'
     extract: true
 
@@ -44,7 +48,7 @@ steps:
   inputs:
     packageType: 'upack'
     feed: '861dcca4-4ec2-450d-9a1e-3da6589aaed3/3f5ab7a3-6c73-4098-894f-ddfcfac00b01'
-    definition: 'databaseBackup'
-    version: '1.0'
+    definition: $(databaseBackup)
+    version: $(databaseBackupVersion)
     downloadPath: 'database/'
     extract: true
