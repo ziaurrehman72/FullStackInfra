@@ -10,7 +10,7 @@ resources:
     source: ziaurrehman72.hello-rest-api
     trigger: 
       branches:
-      - refs/heads/main
+      - refs/heads/master
   - pipeline: BackEndPipeline   
     source: ziaurrehman72.hello-fe 
     trigger: 
