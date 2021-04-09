@@ -82,6 +82,9 @@ steps:
 #TODO: Run terraform
 - script: |
     cd terraform/
+    echo "Running terraform init"
+    terraform init
+    echo "Running terraform plan"
     terraform plan
     ls -lrt -R terraform
   displayName: 'Run Terraform'
