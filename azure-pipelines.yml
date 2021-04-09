@@ -8,6 +8,9 @@ variables:
   databaseBackupName: databaseBackup
   databaseBackupVersion: 1.0
 
+# If setting up the whole infra for the first time
+  freshSetup: true
+
 resources:
  pipelines:
   - pipeline: FrontEndPipeline   
@@ -35,6 +38,7 @@ steps:
 
 - task: DownloadPackage@1
   displayName: Download Terraform State file
+  condition: eq(freshSetup, true)
   inputs:
     packageType: 'upack'
     feed: '861dcca4-4ec2-450d-9a1e-3da6589aaed3/88f2c9de-f3d7-411b-8a5b-eff9807a7bcc'
@@ -45,6 +49,8 @@ steps:
 
 
 - task: DownloadPackage@1
+  displayName: Download datbase backup
+  condition: eq(freshSetup, true)
   inputs:
     packageType: 'upack'
     feed: '861dcca4-4ec2-450d-9a1e-3da6589aaed3/3f5ab7a3-6c73-4098-894f-ddfcfac00b01'
@@ -52,3 +58,4 @@ steps:
     version: $(databaseBackupVersion)
     downloadPath: 'database/'
     extract: true
+
