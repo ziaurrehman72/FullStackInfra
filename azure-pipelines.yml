@@ -77,7 +77,11 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'echo "Authenticating to Azure Cloud..."'
-    
-#TODO: Run terraform 
+
+#TODO: Run terraform
+- script: |
+    ls -lrt 
+    terraform version
+  displayName: 'Run Terraform'
 
 #TODO: publish terraform state file to az feeds
