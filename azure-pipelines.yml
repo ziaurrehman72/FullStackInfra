@@ -83,6 +83,7 @@ steps:
 - script: |
     cd terraform/
     terraform plan
+    ls -lrt terraform
   displayName: 'Run Terraform'
 
 #TODO: publish terraform state file to az feeds
