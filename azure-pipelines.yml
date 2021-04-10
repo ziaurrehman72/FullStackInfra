@@ -71,15 +71,21 @@ steps:
 
 
 #TODO: Run terraform
-- script: |
-    cd terraform/
-    terraform init
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd terraform/
+      terraform init
   displayName: 'terraform init'
 
-- script: |
-    cd terraform/
-    terraform plan -var="client_id=$(client_id)" -var="tenant_id=$(tenant_id)"  -var="client_secret=$(client_secret)"  -var="subscription_id=$(subscription_id)" 
-    ls -lrt -R 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      cd terraform/
+      terraform plan -var="client_id=$(client_id)" -var="tenant_id=$(tenant_id)"  -var="client_secret=$(client_secret)"  -var="subscription_id=$(subscription_id)" 
+      ls -lrt -R 
   displayName: 'terraform plan'
 
 #TODO: publish terraform state file to az feeds
