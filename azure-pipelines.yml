@@ -90,7 +90,7 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: 'terraform/.terraform terraform/.terraform.lock.hcl'
-    includeRootFolder: true
+    includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(terraformStateName).zip'
     replaceExistingArchive: true
