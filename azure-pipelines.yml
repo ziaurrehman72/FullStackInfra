@@ -95,7 +95,11 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(terraformStateName).zip'
     replaceExistingArchive: true
 
-- script: ls -alrt -R 
+- script: |
+     ls -alrt -R 
+     unzip $(Build.ArtifactStagingDirectory)/$(terraformStateName).zip
+     echo unzipping
+     ls -alrt -R 
   displayName: Check Directory
 
 
