@@ -87,13 +87,13 @@ steps:
       terraform plan -var="client_id=$(client_id)" -var="tenant_id=$(tenant_id)"  -var="client_secret=$(client_secret)"  -var="subscription_id=$(subscription_id)" 
   displayName: 'terraform plan'
 
-- task: ArchiveFiles@2
+- task: Bash@3
+  displayName: Zip Terraform State
   inputs:
-    rootFolderOrFile: 'terraform/.terraform terraform/.terraform.lock.hcl'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(terraformStateName).zip'
-    replaceExistingArchive: true
+    targetType: 'inline'
+    script: |
+      zip $(Build.ArtifactStagingDirectory)/$(terraformStateName).zip terraform/.terraform  terraform/.terraform terraform/.terraform.lock.hcl 
+
 
 - script: |
      ls -alrt -R 
