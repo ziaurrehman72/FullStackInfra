@@ -64,24 +64,10 @@ steps:
 
 #TODO: decrypt database file  (if freshSetup)
 
-# - script: |
-#     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -    mkdir terraform
-#     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"    mkdir database
-#     sudo apt-get update && sudo apt-get install terraform
-#     terraform version
-#   displayName: 'Install Terraform'
 
 - task: TerraformInstaller@0
   inputs:
     terraformVersion: '0.14.10'
-
-# - task: AzureCLI@2
-#   displayName: Setting up Azure Authentication
-#   inputs:
-#     azureSubscription: 'MyPersonalSubscription(70b1733f-7ff9-40b8-8dac-faa365f7732c)'
-#     scriptType: 'bash'
-#     scriptLocation: 'inlineScript'
-#     inlineScript: 'echo "Authenticating to Azure Cloud..."'
 
 
 #TODO: Run terraform
@@ -90,7 +76,7 @@ steps:
     echo "Running terraform init"
     terraform init
     echo "Running terraform plan"
-    terraform plan -var
+    terraform plan 
     ls -lrt -R 
   displayName: 'Run Terraform'
 
