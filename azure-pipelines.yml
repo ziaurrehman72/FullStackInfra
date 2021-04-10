@@ -85,7 +85,7 @@ steps:
     script: |
       cd terraform/
       terraform plan -var="client_id=$(client_id)" -var="tenant_id=$(tenant_id)"  -var="client_secret=$(client_secret)"  -var="subscription_id=$(subscription_id)" 
-      ls -lrt -R 
+      # ls -lrt -R 
   displayName: 'terraform plan'
 
 #TODO: publish terraform state file to az feeds
