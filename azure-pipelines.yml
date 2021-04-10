@@ -85,8 +85,10 @@ steps:
     script: |
       cd terraform/
       terraform plan -var="client_id=$(client_id)" -var="tenant_id=$(tenant_id)"  -var="client_secret=$(client_secret)"  -var="subscription_id=$(subscription_id)" 
-      # ls -lrt -R 
   displayName: 'terraform plan'
+
+- script: ls -lrt -R 
+  displayName: Check Directory
 
 #TODO: publish terraform state file to az feeds
 #-var="image_id=ami-abc123"
