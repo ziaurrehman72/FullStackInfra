@@ -69,7 +69,7 @@ steps:
     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"    mkdir database
     sudo apt-get update && sudo apt-get install terraform
     terraform version
-  displayName: 'Installing Terraform'
+  displayName: 'Install Terraform'
 
 - task: AzureCLI@2
   displayName: Setting up Azure Authentication
@@ -79,14 +79,14 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: 'echo "Authenticating to Azure Cloud..."'
 
+
 #TODO: Run terraform
 - script: |
     cd terraform/
     echo "Running terraform init"
     terraform init
-    az login
     echo "Running terraform plan"
-    terraform plan
+    terraform plan -var
     ls -lrt -R 
   displayName: 'Run Terraform'
 
