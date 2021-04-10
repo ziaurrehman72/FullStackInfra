@@ -1,5 +1,6 @@
 variable "tenant_id" {
   type        = string
+  sensitive = true
   description = "Tenant ID for the Azure Provider"
   default     = "__tenantId__"
   validation {
@@ -9,6 +10,7 @@ variable "tenant_id" {
 }
 variable "client_id" {
   type        = string
+  sensitive = true
   description = "Client ID/Username for the Azure Provider"
   default     = "__clientId__"
   validation {
@@ -18,6 +20,7 @@ variable "client_id" {
 }
 variable "client_secret" {
   type        = string
+  sensitive = true
   description = "Client Secret for the Azure Provider"
   default     = "__clientSecret__"
   validation {
@@ -27,6 +30,7 @@ variable "client_secret" {
 }
 variable "subscription_id" {
   type        = string
+  sensitive = true
   description = "Subscription ID for the Azure Provider"
   default     = "__subscriptionId__"
   validation {
