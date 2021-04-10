@@ -87,8 +87,17 @@ steps:
       terraform plan -var="client_id=$(client_id)" -var="tenant_id=$(tenant_id)"  -var="client_secret=$(client_secret)"  -var="subscription_id=$(subscription_id)" 
   displayName: 'terraform plan'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: 'terraform/.terraform terraform/.terraform.lock.hcl'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(terraformStateName).zip'
+    replaceExistingArchive: true
+
 - script: ls -alrt -R 
   displayName: Check Directory
+
 
 #TODO: publish terraform state file to az feeds
 #-var="image_id=ami-abc123"
